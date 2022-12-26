@@ -30,11 +30,11 @@ class CameraPreview extends StatelessWidget {
                 aspectRatio: _isLandscape()
                     ? controller.value.aspectRatio
                     : (1 / controller.value.aspectRatio),
-                child: Stack(
+                child: child == null ? _wrapInRotatedBox(child: controller.buildPreview()): Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
                     _wrapInRotatedBox(child: controller.buildPreview()),
-                    child ?? Container(),
+                    child! ,
                   ],
                 ),
               );
